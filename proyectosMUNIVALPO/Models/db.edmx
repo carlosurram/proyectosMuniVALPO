@@ -1,0 +1,356 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="VentanillaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="MUNI_archivo">
+          <Key>
+            <PropertyRef Name="id_archivo" />
+          </Key>
+          <Property Name="id_archivo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="archivo" Type="varbinary(max)" />
+          <Property Name="id_proyecto" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MUNI_estado">
+          <Key>
+            <PropertyRef Name="id_estado" />
+          </Key>
+          <Property Name="id_estado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="MUNI_proyecto">
+          <Key>
+            <PropertyRef Name="id_proyecto" />
+          </Key>
+          <Property Name="id_proyecto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" />
+          <Property Name="direccion" Type="varchar" MaxLength="50" />
+          <Property Name="fecha_entrega" Type="date" />
+          <Property Name="bajada" Type="varchar" MaxLength="120" />
+          <Property Name="descripcion" Type="varchar" MaxLength="1200" />
+          <Property Name="id_tipoProyecto" Type="int" Nullable="false" />
+          <Property Name="id_responsable" Type="int" Nullable="false" />
+          <Property Name="id_estado" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MUNI_responsable">
+          <Key>
+            <PropertyRef Name="id_responsable" />
+          </Key>
+          <Property Name="id_responsable" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="correo" Type="varchar" MaxLength="25" />
+          <Property Name="descipcion" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="MUNI_tipo_proyecto">
+          <Key>
+            <PropertyRef Name="id_tipoProyecto" />
+          </Key>
+          <Property Name="id_tipoProyecto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="MUNI_usuario">
+          <Key>
+            <PropertyRef Name="id_usuario" />
+          </Key>
+          <Property Name="id_usuario" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="nombre_usuario" Type="varchar" MaxLength="20" />
+          <Property Name="contrasena" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <Association Name="FK_MUNI_archivo_MUNI_proyecto">
+          <End Role="MUNI_proyecto" Type="Self.MUNI_proyecto" Multiplicity="1" />
+          <End Role="MUNI_archivo" Type="Self.MUNI_archivo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MUNI_proyecto">
+              <PropertyRef Name="id_proyecto" />
+            </Principal>
+            <Dependent Role="MUNI_archivo">
+              <PropertyRef Name="id_proyecto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MUNI_proyecto_MUNI_estado">
+          <End Role="MUNI_estado" Type="Self.MUNI_estado" Multiplicity="1" />
+          <End Role="MUNI_proyecto" Type="Self.MUNI_proyecto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MUNI_estado">
+              <PropertyRef Name="id_estado" />
+            </Principal>
+            <Dependent Role="MUNI_proyecto">
+              <PropertyRef Name="id_estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MUNI_proyecto_MUNI_responsable">
+          <End Role="MUNI_responsable" Type="Self.MUNI_responsable" Multiplicity="1" />
+          <End Role="MUNI_proyecto" Type="Self.MUNI_proyecto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MUNI_responsable">
+              <PropertyRef Name="id_responsable" />
+            </Principal>
+            <Dependent Role="MUNI_proyecto">
+              <PropertyRef Name="id_responsable" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MUNI_proyecto_MUNI_tipo_proyecto">
+          <End Role="MUNI_tipo_proyecto" Type="Self.MUNI_tipo_proyecto" Multiplicity="1" />
+          <End Role="MUNI_proyecto" Type="Self.MUNI_proyecto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MUNI_tipo_proyecto">
+              <PropertyRef Name="id_tipoProyecto" />
+            </Principal>
+            <Dependent Role="MUNI_proyecto">
+              <PropertyRef Name="id_tipoProyecto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="VentanillaModelStoreContainer">
+          <EntitySet Name="MUNI_archivo" EntityType="Self.MUNI_archivo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MUNI_estado" EntityType="Self.MUNI_estado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MUNI_proyecto" EntityType="Self.MUNI_proyecto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MUNI_responsable" EntityType="Self.MUNI_responsable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MUNI_tipo_proyecto" EntityType="Self.MUNI_tipo_proyecto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MUNI_usuario" EntityType="Self.MUNI_usuario" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_MUNI_archivo_MUNI_proyecto" Association="Self.FK_MUNI_archivo_MUNI_proyecto">
+            <End Role="MUNI_proyecto" EntitySet="MUNI_proyecto" />
+            <End Role="MUNI_archivo" EntitySet="MUNI_archivo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MUNI_proyecto_MUNI_estado" Association="Self.FK_MUNI_proyecto_MUNI_estado">
+            <End Role="MUNI_estado" EntitySet="MUNI_estado" />
+            <End Role="MUNI_proyecto" EntitySet="MUNI_proyecto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MUNI_proyecto_MUNI_responsable" Association="Self.FK_MUNI_proyecto_MUNI_responsable">
+            <End Role="MUNI_responsable" EntitySet="MUNI_responsable" />
+            <End Role="MUNI_proyecto" EntitySet="MUNI_proyecto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MUNI_proyecto_MUNI_tipo_proyecto" Association="Self.FK_MUNI_proyecto_MUNI_tipo_proyecto">
+            <End Role="MUNI_tipo_proyecto" EntitySet="MUNI_tipo_proyecto" />
+            <End Role="MUNI_proyecto" EntitySet="MUNI_proyecto" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="VentanillaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="MUNI_archivo">
+          <Key>
+            <PropertyRef Name="id_archivo" />
+          </Key>
+          <Property Name="id_archivo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="archivo" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="id_proyecto" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="MUNI_proyecto" Relationship="Self.FK_MUNI_archivo_MUNI_proyecto" FromRole="MUNI_archivo" ToRole="MUNI_proyecto" />
+        </EntityType>
+        <EntityType Name="MUNI_estado">
+          <Key>
+            <PropertyRef Name="id_estado" />
+          </Key>
+          <Property Name="id_estado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descripcion" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="MUNI_proyecto" Relationship="Self.FK_MUNI_proyecto_MUNI_estado" FromRole="MUNI_estado" ToRole="MUNI_proyecto" />
+        </EntityType>
+        <EntityType Name="MUNI_proyecto">
+          <Key>
+            <PropertyRef Name="id_proyecto" />
+          </Key>
+          <Property Name="id_proyecto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="direccion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="fecha_entrega" Type="DateTime" Precision="0" />
+          <Property Name="bajada" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
+          <Property Name="descripcion" Type="String" MaxLength="1200" FixedLength="false" Unicode="false" />
+          <Property Name="id_tipoProyecto" Type="Int32" Nullable="false" />
+          <Property Name="id_responsable" Type="Int32" Nullable="false" />
+          <Property Name="id_estado" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="MUNI_archivo" Relationship="Self.FK_MUNI_archivo_MUNI_proyecto" FromRole="MUNI_proyecto" ToRole="MUNI_archivo" />
+          <NavigationProperty Name="MUNI_estado" Relationship="Self.FK_MUNI_proyecto_MUNI_estado" FromRole="MUNI_proyecto" ToRole="MUNI_estado" />
+          <NavigationProperty Name="MUNI_responsable" Relationship="Self.FK_MUNI_proyecto_MUNI_responsable" FromRole="MUNI_proyecto" ToRole="MUNI_responsable" />
+          <NavigationProperty Name="MUNI_tipo_proyecto" Relationship="Self.FK_MUNI_proyecto_MUNI_tipo_proyecto" FromRole="MUNI_proyecto" ToRole="MUNI_tipo_proyecto" />
+        </EntityType>
+        <EntityType Name="MUNI_responsable">
+          <Key>
+            <PropertyRef Name="id_responsable" />
+          </Key>
+          <Property Name="id_responsable" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="correo" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="descipcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="MUNI_proyecto" Relationship="Self.FK_MUNI_proyecto_MUNI_responsable" FromRole="MUNI_responsable" ToRole="MUNI_proyecto" />
+        </EntityType>
+        <EntityType Name="MUNI_tipo_proyecto">
+          <Key>
+            <PropertyRef Name="id_tipoProyecto" />
+          </Key>
+          <Property Name="id_tipoProyecto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descripcion" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="MUNI_proyecto" Relationship="Self.FK_MUNI_proyecto_MUNI_tipo_proyecto" FromRole="MUNI_tipo_proyecto" ToRole="MUNI_proyecto" />
+        </EntityType>
+        <EntityType Name="MUNI_usuario">
+          <Key>
+            <PropertyRef Name="id_usuario" />
+          </Key>
+          <Property Name="id_usuario" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nombre_usuario" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="contrasena" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK_MUNI_archivo_MUNI_proyecto">
+          <End Role="MUNI_proyecto" Type="Self.MUNI_proyecto" Multiplicity="1" />
+          <End Role="MUNI_archivo" Type="Self.MUNI_archivo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MUNI_proyecto">
+              <PropertyRef Name="id_proyecto" />
+            </Principal>
+            <Dependent Role="MUNI_archivo">
+              <PropertyRef Name="id_proyecto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MUNI_proyecto_MUNI_estado">
+          <End Role="MUNI_estado" Type="Self.MUNI_estado" Multiplicity="1" />
+          <End Role="MUNI_proyecto" Type="Self.MUNI_proyecto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MUNI_estado">
+              <PropertyRef Name="id_estado" />
+            </Principal>
+            <Dependent Role="MUNI_proyecto">
+              <PropertyRef Name="id_estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MUNI_proyecto_MUNI_responsable">
+          <End Role="MUNI_responsable" Type="Self.MUNI_responsable" Multiplicity="1" />
+          <End Role="MUNI_proyecto" Type="Self.MUNI_proyecto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MUNI_responsable">
+              <PropertyRef Name="id_responsable" />
+            </Principal>
+            <Dependent Role="MUNI_proyecto">
+              <PropertyRef Name="id_responsable" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MUNI_proyecto_MUNI_tipo_proyecto">
+          <End Role="MUNI_tipo_proyecto" Type="Self.MUNI_tipo_proyecto" Multiplicity="1" />
+          <End Role="MUNI_proyecto" Type="Self.MUNI_proyecto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MUNI_tipo_proyecto">
+              <PropertyRef Name="id_tipoProyecto" />
+            </Principal>
+            <Dependent Role="MUNI_proyecto">
+              <PropertyRef Name="id_tipoProyecto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="VentanillaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="MUNI_archivo" EntityType="Self.MUNI_archivo" />
+          <EntitySet Name="MUNI_estado" EntityType="Self.MUNI_estado" />
+          <EntitySet Name="MUNI_proyecto" EntityType="Self.MUNI_proyecto" />
+          <EntitySet Name="MUNI_responsable" EntityType="Self.MUNI_responsable" />
+          <EntitySet Name="MUNI_tipo_proyecto" EntityType="Self.MUNI_tipo_proyecto" />
+          <EntitySet Name="MUNI_usuario" EntityType="Self.MUNI_usuario" />
+          <AssociationSet Name="FK_MUNI_archivo_MUNI_proyecto" Association="Self.FK_MUNI_archivo_MUNI_proyecto">
+            <End Role="MUNI_proyecto" EntitySet="MUNI_proyecto" />
+            <End Role="MUNI_archivo" EntitySet="MUNI_archivo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MUNI_proyecto_MUNI_estado" Association="Self.FK_MUNI_proyecto_MUNI_estado">
+            <End Role="MUNI_estado" EntitySet="MUNI_estado" />
+            <End Role="MUNI_proyecto" EntitySet="MUNI_proyecto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MUNI_proyecto_MUNI_responsable" Association="Self.FK_MUNI_proyecto_MUNI_responsable">
+            <End Role="MUNI_responsable" EntitySet="MUNI_responsable" />
+            <End Role="MUNI_proyecto" EntitySet="MUNI_proyecto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MUNI_proyecto_MUNI_tipo_proyecto" Association="Self.FK_MUNI_proyecto_MUNI_tipo_proyecto">
+            <End Role="MUNI_tipo_proyecto" EntitySet="MUNI_tipo_proyecto" />
+            <End Role="MUNI_proyecto" EntitySet="MUNI_proyecto" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="VentanillaModelStoreContainer" CdmEntityContainer="VentanillaEntities">
+          <EntitySetMapping Name="MUNI_archivo">
+            <EntityTypeMapping TypeName="VentanillaModel.MUNI_archivo">
+              <MappingFragment StoreEntitySet="MUNI_archivo">
+                <ScalarProperty Name="id_archivo" ColumnName="id_archivo" />
+                <ScalarProperty Name="archivo" ColumnName="archivo" />
+                <ScalarProperty Name="id_proyecto" ColumnName="id_proyecto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MUNI_estado">
+            <EntityTypeMapping TypeName="VentanillaModel.MUNI_estado">
+              <MappingFragment StoreEntitySet="MUNI_estado">
+                <ScalarProperty Name="id_estado" ColumnName="id_estado" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MUNI_proyecto">
+            <EntityTypeMapping TypeName="VentanillaModel.MUNI_proyecto">
+              <MappingFragment StoreEntitySet="MUNI_proyecto">
+                <ScalarProperty Name="id_proyecto" ColumnName="id_proyecto" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="fecha_entrega" ColumnName="fecha_entrega" />
+                <ScalarProperty Name="bajada" ColumnName="bajada" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="id_tipoProyecto" ColumnName="id_tipoProyecto" />
+                <ScalarProperty Name="id_responsable" ColumnName="id_responsable" />
+                <ScalarProperty Name="id_estado" ColumnName="id_estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MUNI_responsable">
+            <EntityTypeMapping TypeName="VentanillaModel.MUNI_responsable">
+              <MappingFragment StoreEntitySet="MUNI_responsable">
+                <ScalarProperty Name="id_responsable" ColumnName="id_responsable" />
+                <ScalarProperty Name="correo" ColumnName="correo" />
+                <ScalarProperty Name="descipcion" ColumnName="descipcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MUNI_tipo_proyecto">
+            <EntityTypeMapping TypeName="VentanillaModel.MUNI_tipo_proyecto">
+              <MappingFragment StoreEntitySet="MUNI_tipo_proyecto">
+                <ScalarProperty Name="id_tipoProyecto" ColumnName="id_tipoProyecto" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MUNI_usuario">
+            <EntityTypeMapping TypeName="VentanillaModel.MUNI_usuario">
+              <MappingFragment StoreEntitySet="MUNI_usuario">
+                <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+                <ScalarProperty Name="nombre_usuario" ColumnName="nombre_usuario" />
+                <ScalarProperty Name="contrasena" ColumnName="contrasena" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

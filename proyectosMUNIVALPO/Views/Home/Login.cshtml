@@ -1,0 +1,100 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+    //Layout = "/views/Login.cshtml";
+}
+
+    <html>
+    <head>
+
+        <script src="/scripts/customBack.js"></script>
+
+        <script src="/scripts/customFor.js"></script>
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Ilustre Municipalidad de Valparaíso</title>
+
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+        <link rel="shortcut icon" href="/resources/favicon.ico">
+        <link href="https://fonts.googleapis.com/css?family=Karla:400,700" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700" rel="stylesheet">
+
+        <!-- Animate.css -->
+        <link rel="stylesheet" href="../css/animate.css">
+        <!-- Icomoon Icon Fonts-->
+        <link rel="stylesheet" href="../css/icomoon.css">
+        <!-- Bootstrap  -->
+        <link rel="stylesheet" href="../css/bootstrap.css">
+        <!-- Owl Carousel -->
+        <link rel="stylesheet" href="../css/owl.carousel.min.css">
+        <link rel="stylesheet" href="../css/owl.theme.default.min.css">
+        <!-- Magnific Popup -->
+        <link rel="stylesheet" href="../css/magnific-popup.css">
+        <link rel="stylesheet" href="../css/style.css">
+
+        <!-- Modernizr JS -->
+        <script src="../js/modernizr-2.6.2.min.js"></script>
+        <!-- FOR IE9 below -->
+        <!--[if lt IE 9]>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+
+    </head>
+    <body onload="nobackbutton(); noforwardbutton();">
+        <div id="colorlib-page">
+            <header>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="colorlib-navbar-brand">
+                                <a class="colorlib-logo" href="#"><img src="/resources/logo.png" width="150" alt="Ilustre Municipalidad de Valparaíso" /></a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <div id="colorlib-contact">
+                <div class="container">
+                    <div class="row text-center">
+                        <h2 class="bold">Login</h2>
+                    </div>
+                    <div class="wrapper fadeInDown">
+                        <div id="formContent">
+                            <!-- Tabs Titles -->
+                            <!-- Icon -->
+                            <div class="fadeIn first">
+                                <img src="../resources/login.png" id="icon" alt="Login" />
+                            </div>
+                            <!-- Login Form -->
+                            <form action="Verify" method="post">
+                                <div class="col-md-12" style="padding-left:3em;">
+                                    <div class="row ">
+                                        <div class="col-md-11"><input type="text" id="login" class="form-control" name="Name" placeholder="Nombre de usuario" required></div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-11"><input type="password" id="password" class="form-control" name="Password" placeholder="Contraseña" required></div>
+                                    </div>
+                                    <br/>
+                                    <div class="row">
+                                        <div class="col-md-11"><input type="submit" class="fadeIn fourth" value="Ingresar"></div>
+                                    </div>
+                                    <br />
+
+                                </div>
+                            </form>
+
+                            <!-- Remind Passowrd -->
+
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </body>
+    </html>
+
