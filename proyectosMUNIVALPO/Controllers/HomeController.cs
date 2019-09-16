@@ -39,7 +39,7 @@ namespace proyectosMUNIVALPO.Controllers
 
         void connectionString()
         {
-            con.ConnectionString = "Server=192.168.110.22;Database=Ventanilla;User Id=practicadesarrollo;Password=acbd232302;";
+            con.ConnectionString = "Server=192.168.110.22;Database=Ventanilla;User Id=practicadesarrollo;Password=Acbd232302;";
 
         }
 
