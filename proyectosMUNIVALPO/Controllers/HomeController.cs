@@ -65,6 +65,33 @@ namespace proyectosMUNIVALPO.Controllers
         }
 
 
+        /* posible solucion para crear un formulario, aun no se si sirva o como deberia ocupar x.x
+         
+
+        public ActionResult RegistroProyecto(Formulario form)
+        {
+            connectionString();
+            con.Open();
+            com.Connection = con;
+            com.CommandText = "insert into proyecto (nombre , direccion, fecha_entrega, bajada, descripcion) values ('' + acc.Nombre ";
+            dr = com.ExecuteReader();
+            if (dr.Read())
+            {
+                Session["Login"] = "correcto";
+                con.Close();
+                return View("RegistrarProyecto");
+            }
+            else
+            {
+                con.Close();
+                return View("Error");
+            }
+        }
+
+
+         */
+
+
         public ActionResult RegistrarProyecto()
         {
             if (Session["Login"] != null)

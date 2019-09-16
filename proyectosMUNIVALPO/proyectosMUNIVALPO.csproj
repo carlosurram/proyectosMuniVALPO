@@ -148,6 +148,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>db.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\Formulario.cs" />
     <Compile Include="Models\MUNI_archivo.cs">
       <DependentUpon>db.tt</DependentUpon>
     </Compile>
