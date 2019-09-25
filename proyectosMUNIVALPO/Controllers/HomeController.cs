@@ -64,6 +64,28 @@ namespace proyectosMUNIVALPO.Controllers
             }
         }
 
+        public ActionResult AgregarProyecto(FormularioProyecto form)
+        {
+           /* "insert into "
+
+            connectionString();
+            con.Open();
+            com.Connection = con;
+            com.CommandText = "select * from usuario where nombre_usuario='" + acc.Name + "' and contrasena='" + acc.Password + "'";
+            dr = com.ExecuteReader();
+            if (dr.Read())
+            {
+                Session["Login"] = "correcto";
+                con.Close();
+                return View("RegistrarProyecto");
+            }
+            else
+            {
+                con.Close();
+                return View("Error");
+            }*/
+        }
+
 
         public ActionResult RegistrarProyecto()
         {
