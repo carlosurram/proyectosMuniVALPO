@@ -64,9 +64,10 @@ namespace proyectosMUNIVALPO.Controllers
             }
         }
 
+        /*
         public ActionResult AgregarProyecto(FormularioProyecto form)
         {
-           /* "insert into "
+            "insert into "
 
             connectionString();
             con.Open();
@@ -83,10 +84,11 @@ namespace proyectosMUNIVALPO.Controllers
             {
                 con.Close();
                 return View("Error");
-            }*/
-        }
+            }
+         }*/
 
 
+        [HttpGet]
         public ActionResult RegistrarProyecto()
         {
             if (Session["Login"] != null)
