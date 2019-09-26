@@ -64,41 +64,42 @@ namespace proyectosMUNIVALPO.Controllers
             }
         }
 
-        
-        public ActionResult AgregarProyecto(FormularioProyecto form)
+        [HttpPost]
+        public ActionResult AgregarProyecto(FormularioProyecto form)   
         {
             
 
             connectionString();
             con.Open();
             com.Connection = con;
-            //sql = "Insert into demotb(TutorialID,TutorialName) value(3, '" + "VB.Net +"')";
-            try
-            {
-                
-                string Insquery = "INSERT into MUNI_proyecto (nombre,direccion,fecha_entrega,bajada,descripcion,id_tipoProyecto,id_responsable,id_estado) VALUES (@nombre,@direccion,@fecha_entrega,@bajada,@descripcion,@id_tipoProyecto,@id_responsable,@id_estado)";
+           //sql = "Insert into demotb(TutorialID,TutorialName) value(3, '" + "VB.Net +"')";
+            
+                com.CommandText = "INSERT into MUNI_proyecto (nombre,direccion,fecha_entrega,bajada,descripcion,id_tipoProyecto,id_responsable,id_estado) " +
+
+                "VALUES (@nombre,@direccion,@fecha_entrega,@bajada,@descripcion,@id_tipoProyecto,@id_responsable,@id_estado)";
                 // VALUES (@  ,@, @ , @ , @ , @rol , @ , @direccion_rol )"
 
+
                 com.Parameters.AddWithValue("nombre", form.Nombre);
-                com.Parameters.AddWithValue("fecha_entrega", form.Direccion);
+                com.Parameters.AddWithValue("direccion", form.Direccion);
+                com.Parameters.AddWithValue("fecha_entrega", form.Fecha);
                 com.Parameters.AddWithValue("bajada", form.Bajada);
                 com.Parameters.AddWithValue("descripcion", form.Descripcion);
                 com.Parameters.AddWithValue("id_tipoProyecto", form.TipoProyecto);
                 com.Parameters.AddWithValue("id_responsable", form.Responsable);
-                com.Parameters.AddWithValue("id_estado", form.Estado);
+                int id_estado = 1;
+                com.Parameters.AddWithValue("id_estado", id_estado);
+                //com.Parameters.AddWithValue("id_estado", form.Estado);
 
 
                 com.ExecuteNonQuery();
                 
                 
-                conn.Close();
+                con.Close();
                 
-            }
-            catch (Exception)
-            {
+            
 
-                MessageBox.Show("No se Ingreso");
-            }
+            return View("RegistrarProyecto");
         }
 
 
