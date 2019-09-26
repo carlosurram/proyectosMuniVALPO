@@ -64,28 +64,42 @@ namespace proyectosMUNIVALPO.Controllers
             }
         }
 
-        /*
+        
         public ActionResult AgregarProyecto(FormularioProyecto form)
         {
-            "insert into "
+            
 
             connectionString();
             con.Open();
             com.Connection = con;
-            com.CommandText = "select * from usuario where nombre_usuario='" + acc.Name + "' and contrasena='" + acc.Password + "'";
-            dr = com.ExecuteReader();
-            if (dr.Read())
+            //sql = "Insert into demotb(TutorialID,TutorialName) value(3, '" + "VB.Net +"')";
+            try
             {
-                Session["Login"] = "correcto";
-                con.Close();
-                return View("RegistrarProyecto");
+                
+                string Insquery = "INSERT into MUNI_proyecto (nombre,direccion,fecha_entrega,bajada,descripcion,id_tipoProyecto,id_responsable,id_estado) VALUES (@nombre,@direccion,@fecha_entrega,@bajada,@descripcion,@id_tipoProyecto,@id_responsable,@id_estado)";
+                // VALUES (@  ,@, @ , @ , @ , @rol , @ , @direccion_rol )"
+
+                com.Parameters.AddWithValue("nombre", form.Nombre);
+                com.Parameters.AddWithValue("fecha_entrega", form.Direccion);
+                com.Parameters.AddWithValue("bajada", form.Bajada);
+                com.Parameters.AddWithValue("descripcion", form.Descripcion);
+                com.Parameters.AddWithValue("id_tipoProyecto", form.TipoProyecto);
+                com.Parameters.AddWithValue("id_responsable", form.Responsable);
+                com.Parameters.AddWithValue("id_estado", form.Estado);
+
+
+                com.ExecuteNonQuery();
+                
+                
+                conn.Close();
+                
             }
-            else
+            catch (Exception)
             {
-                con.Close();
-                return View("Error");
+
+                MessageBox.Show("No se Ingreso");
             }
-         }*/
+        }
 
 
         [HttpGet]
