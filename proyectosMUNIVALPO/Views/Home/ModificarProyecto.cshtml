@@ -55,7 +55,7 @@
                         <div class="col-md-12">
                             <ul>
                                 <li><a href="/Home/RegistrarProyecto">Ingresar proyecto</a></li>
-                                <li><a href="/Home/ModificarProyecto">Modificar proyecto</a></li>
+                                
                                 <li><a href="/Home/SeleccionarProyecto">Visualizar proyectos</a></li>
                                 <li><a href="/Home/Login">cerrar sesión</a></li>
 
@@ -75,7 +75,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="colorlib-navbar-brand hidden-xs">
-                                <a class="colorlib-logo" href="index.html"><img src="/resources/logo.png" width="150" alt="Ilustre Municipalidad de Valparaíso" /></a>
+                                <a class="colorlib-logo" href="#"><img src="/resources/logo.png" width="150" alt="Ilustre Municipalidad de Valparaíso" /></a>
                             </div>
                             <a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle"><i></i></a>
                         </div>
@@ -105,16 +105,16 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-md-9">
-                                        Nombre del proyecto <input type="text" class="form-control">
+                                        Nombre del proyecto <input type="text" id="nombreProyecto" name="Nombre" class="form-control " required>
                                     </div>
                                     <div class="col-md-3">
 
                                         Tipo de proyecto
-                                        <select id="Select1" class="form-control">
-                                            <option>Tipo 1</option>
-                                            <option>Tipo 2</option>
-                                            <option>Tipo 3</option>
-                                            <option>Tipo 4</option>
+                                        <select id="tipoProyecto" name="TipoProyecto" class="form-control" >
+                                            <option value="1">Tipo 1</option>
+                                            <option value="2">Tipo 2</option>
+                                            <option value="3">Tipo 3</option>
+                                            <option value="4">Tipo 4</option>
 
                                         </select>
 
@@ -123,43 +123,39 @@
 
                                 <div class="row">
                                     <div class="col-md-4">
-                                        Fecha entrega proyecto <input type="text" class="form-control">
+                                        Fecha entrega proyecto <input type="date" id="fechaEntrega" name="Fecha" class="form-control" required>
                                     </div>
                                     <div class="col-md-8">
 
                                         Ubicación/dirección
-                                        <input type="text" class="form-control">
+                                        <input type="text" id="direccion" name="Direccion" class="form-control" required>
                                     </div>
 
 
                                 </div>
                                 <div class="row">
                                     <div class="col-md-4">
-                                        Oficina/dirección a responsable <select id="Select1" class="form-control">
-                                            <option>Secpla</option>
-                                            <option>Dideco</option>
+                                        Oficina/dirección a responsable <select id="responsable" name="Responsable" class="form-control" >
+                                            <option value="1">Secpla</option>
+                                            <option value="2">Dideco</option>
                                             <option>Otra</option>
 
 
                                         </select>
                                     </div>
-                                    <div class="col-md-8">
-
-                                        Email de contacto
-                                        <input type="text" class="form-control">
-                                    </div>
+                                    
 
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12">
-                                        Bajada (máx. 120 caracteres)<input type="text" class="form-control">
+                                        Bajada (máx. 120 caracteres)<input type="text" id="bajada" name="Bajada" class="form-control" >
                                     </div>
 
                                 </div>
                                 <br />
                                 <div class="row">
                                     <div class="col-md-12">
-                                        Descripción (máx 1.200 caracteres) <textarea id="TextArea1" rows="11" cols="40" class="form-control"></textarea>
+                                        Descripción (máx 1.200 caracteres) <textarea id="descripcion" name="Descripcion" rows="11" cols="40" class="form-control" ></textarea>
                                     </div>
 
                                 </div>
