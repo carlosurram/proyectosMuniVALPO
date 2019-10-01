@@ -143,8 +143,8 @@ namespace proyectosMUNIVALPO.Controllers
                 List<ProyectoViewModel> lst = null;
                 using (VentanillaEntities db = new VentanillaEntities())
                 {
-                    lst = (from d in db.MUNI_proyecto
-                           select new ProyectoViewModel
+                    lst = (from d in db.MUNI_proyecto 
+                           select new ProyectoViewModel 
                            {
                                Id_proyecto = d.id_proyecto,
                                Nombre = d.nombre,
