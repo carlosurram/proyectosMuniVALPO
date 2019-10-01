@@ -94,15 +94,21 @@
                             </div>
                             <div class="col-md-10  <!--animate-box-->">
                                 <div class="row">
-                                    <div class="col-md-3">  Estado del proyecto:   </div>
-                                    <div class="col-md-9 ">
-                                        <div id="toggles" class="text-right">
-                                            <input type="checkbox" name="checkbox3" id="checkbox3" class="ios-toggle" checked />
-                                            <label for="checkbox3" class="checkbox-label" data-off="Inhabilitado" data-on="Habilitado"></label>
-                                        </div>
+                                    
+                                    <div class="col-md-3">
+
+                                        Estado del proyecto
+                                        <select id="estadoProyecto" name="Estado" class="form-control">
+                                            <option value="1">Habilitado</option>
+                                            <option value="2">Inhabilitado</option>
+                                            <option value="3">Publicado</option>
+                                            
+
+                                        </select>
 
                                     </div>
                                 </div>
+
                                 <div class="row">
                                     <div class="col-md-9">
                                         Nombre del proyecto <input type="text" id="nombreProyecto" name="Nombre" class="form-control " required>
