@@ -134,10 +134,6 @@ namespace proyectosMUNIVALPO.Controllers
 
         public ActionResult SeleccionarProyecto()
         {
-
-
-
-
             if (Session["Login"] != null)
             {
                 List<ProyectoViewModel> lst = null;
