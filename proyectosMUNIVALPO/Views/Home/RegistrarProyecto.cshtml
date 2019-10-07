@@ -10,6 +10,7 @@
 
     <script src="/scripts/customFor.js"></script>
 
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Ilustre Municipalidad de Valparaíso</title>
@@ -57,7 +58,7 @@
                     <div class="col-md-12">
                         <ul>
                             <li><a href="/Home/RegistrarProyecto"><strong>Ingresar proyecto</strong></a></li>
-                            
+
                             <li><a href="/Home/SeleccionarProyecto"><strong>Modificar proyectos</strong></a></li>
                             <li><a href="/Home/Login"><strong>Cerrar sesión</strong></a></li>
 
@@ -97,13 +98,13 @@
                             <div class="col-md-10  <!--animate-box-->">
                                 <div class="row">
                                     <div class="col-md-8">
-                                        Nombre del proyecto <input type="text" id="nombreProyecto"  name="Nombre" class="form-control " required>
+                                        Nombre del proyecto <input type="text" id="nombreProyecto" name="Nombre" class="form-control " required>
                                     </div>
                                     <div class="col-md-4">
 
                                         Tipo de proyecto
                                         <select id="tipoProyecto" name="TipoProyecto" class="form-control" required>
-                                            
+
                                             <option value="1">Salud y Deporte</option>
                                             <option value="2">Desarrollo Económico y Generación de Empleo</option>
                                             <option value="3">Espacios Públicos y Comunitarios</option>
@@ -116,13 +117,13 @@
 
                                 <div class="row">
                                     <div class="col-md-4">
-                                        
+
                                         Fecha entrega proyecto <input type="date" id="fechaEntrega" name="Fecha" class="form-control" required>
                                     </div>
                                     <div class="col-md-8">
 
                                         Ubicación/dirección
-                                        
+
                                         <input type="text" id="direccion" name="Direccion" class="form-control" required>
                                     </div>
 
@@ -138,11 +139,18 @@
 
                                         </select>
                                     </div>
- 
+
+                                    <div class="col-md-8">
+
+                                        Mapa
+
+                                        <input type="text" id="mapa" name="Mapa" class="form-control" required>
+                                    </div>
+
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12">
-                                        
+
                                         Bajada (máx. 120 caracteres)<input type="text" id="bajada" name="Bajada" class="form-control" required>
                                     </div>
 
@@ -150,7 +158,7 @@
                                 <br />
                                 <div class="row">
                                     <div class="col-md-12">
-                                        
+
                                         Descripción (máx 1.200 caracteres) <textarea id="descripcion" name="Descripcion" rows="11" cols="40" class="form-control" required></textarea>
                                     </div>
 
@@ -158,7 +166,7 @@
                                 <br />
                                 <div class="row">
                                     <div class="col-md-12">
-                                        Subir  Archivos <input id="archivos"  name="Archivo" type="file" />
+                                        Subir  Archivos <input id="archivos" name="Archivo" type="file" />
                                     </div>
 
                                 </div>
@@ -204,7 +212,7 @@
             </div>
         </div>
     </div>
-    
+
 
     <!-- jQuery -->
     <script src="../js/jquery.min.js"></script>

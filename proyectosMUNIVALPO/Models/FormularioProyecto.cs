@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-
 namespace proyectosMUNIVALPO.Models
 {
     public class FormularioProyecto
@@ -25,9 +24,14 @@ namespace proyectosMUNIVALPO.Models
 
         public string Estado { get; set; }
 
-        public byte[] Archivo { get; set; }
+        public string Archivo { get; set; }
+
+        public DateTime Fecha_creacion { get; set; }
 
         
+        public string Mapa { get; set; }
+
+
 
 
 

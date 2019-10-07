@@ -75,9 +75,9 @@ namespace proyectosMUNIVALPO.Controllers
             com.Connection = con;
             //sql = "Insert into demotb(TutorialID,TutorialName) value(3, '" + "VB.Net +"')";
 
-            com.CommandText = "INSERT into MUNI_proyecto (nombre,direccion,fecha_entrega,bajada,descripcion,id_tipoProyecto,id_responsable,id_estado) " +
+            com.CommandText = "INSERT into MUNI_proyecto (nombre,direccion,fecha_entrega,bajada,descripcion,id_tipoProyecto,id_responsable,id_estado,fecha_creacion,mapa) " +
 
-            "VALUES (@nombre,@direccion,@fecha_entrega,@bajada,@descripcion,@id_tipoProyecto,@id_responsable,@id_estado)";
+            "VALUES (@nombre,@direccion,@fecha_entrega,@bajada,@descripcion,@id_tipoProyecto,@id_responsable,@id_estado,@fecha_creacion,@mapa)";
             // VALUES (@  ,@, @ , @ , @ , @rol , @ , @direccion_rol )"
 
 
@@ -90,6 +90,10 @@ namespace proyectosMUNIVALPO.Controllers
             com.Parameters.AddWithValue("id_responsable", form.Responsable);
             int id_estado = 1;
             com.Parameters.AddWithValue("id_estado", id_estado);
+            DateTime Fecha_creacion = DateTime.Now;
+            com.Parameters.AddWithValue("fecha_creacion", Fecha_creacion);
+            com.Parameters.AddWithValue("mapa", form.Mapa);
+            
             //com.Parameters.AddWithValue("id_estado", form.Estado);
 
 

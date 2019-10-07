@@ -15,7 +15,7 @@ namespace proyectosMUNIVALPO.Models
     public partial class MUNI_archivo
     {
         public int id_archivo { get; set; }
-        public byte[] archivo { get; set; }
+        public string archivo { get; set; }
         public int id_proyecto { get; set; }
     
         public virtual MUNI_proyecto MUNI_proyecto { get; set; }

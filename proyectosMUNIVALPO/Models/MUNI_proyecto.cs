@@ -29,6 +29,8 @@ namespace proyectosMUNIVALPO.Models
         public int id_tipoProyecto { get; set; }
         public int id_responsable { get; set; }
         public int id_estado { get; set; }
+        public Nullable<System.DateTime> fecha_creacion { get; set; }
+        public string mapa { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MUNI_archivo> MUNI_archivo { get; set; }

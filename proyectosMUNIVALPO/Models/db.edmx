@@ -4,20 +4,20 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="VentanillaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="VentanillaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="MUNI_archivo">
           <Key>
             <PropertyRef Name="id_archivo" />
           </Key>
           <Property Name="id_archivo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="archivo" Type="varbinary(max)" />
+          <Property Name="archivo" Type="varchar" MaxLength="1000" />
           <Property Name="id_proyecto" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="MUNI_estado">
           <Key>
             <PropertyRef Name="id_estado" />
           </Key>
-          <Property Name="id_estado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_estado" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="descripcion" Type="varchar" MaxLength="20" />
         </EntityType>
         <EntityType Name="MUNI_proyecto">
@@ -33,20 +33,22 @@
           <Property Name="id_tipoProyecto" Type="int" Nullable="false" />
           <Property Name="id_responsable" Type="int" Nullable="false" />
           <Property Name="id_estado" Type="int" Nullable="false" />
+          <Property Name="fecha_creacion" Type="datetime" />
+          <Property Name="mapa" Type="varchar" MaxLength="900" />
         </EntityType>
         <EntityType Name="MUNI_responsable">
           <Key>
             <PropertyRef Name="id_responsable" />
           </Key>
-          <Property Name="id_responsable" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="correo" Type="varchar" MaxLength="25" />
+          <Property Name="id_responsable" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="correo" Type="varchar" MaxLength="30" />
           <Property Name="descipcion" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="MUNI_tipo_proyecto">
           <Key>
             <PropertyRef Name="id_tipoProyecto" />
           </Key>
-          <Property Name="id_tipoProyecto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_tipoProyecto" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="descripcion" Type="varchar" MaxLength="20" />
         </EntityType>
         <EntityType Name="MUNI_usuario">
@@ -129,8 +131,7 @@
             <End Role="MUNI_proyecto" EntitySet="MUNI_proyecto" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="VentanillaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -139,7 +140,7 @@
             <PropertyRef Name="id_archivo" />
           </Key>
           <Property Name="id_archivo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="archivo" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="archivo" Type="String" />
           <Property Name="id_proyecto" Type="Int32" Nullable="false" />
           <NavigationProperty Name="MUNI_proyecto" Relationship="Self.FK_MUNI_archivo_MUNI_proyecto" FromRole="MUNI_archivo" ToRole="MUNI_proyecto" />
         </EntityType>
@@ -168,13 +169,15 @@
           <NavigationProperty Name="MUNI_estado" Relationship="Self.FK_MUNI_proyecto_MUNI_estado" FromRole="MUNI_proyecto" ToRole="MUNI_estado" />
           <NavigationProperty Name="MUNI_responsable" Relationship="Self.FK_MUNI_proyecto_MUNI_responsable" FromRole="MUNI_proyecto" ToRole="MUNI_responsable" />
           <NavigationProperty Name="MUNI_tipo_proyecto" Relationship="Self.FK_MUNI_proyecto_MUNI_tipo_proyecto" FromRole="MUNI_proyecto" ToRole="MUNI_tipo_proyecto" />
+          <Property Name="fecha_creacion" Type="DateTime" Precision="3" />
+          <Property Name="mapa" Type="String" MaxLength="900" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="MUNI_responsable">
           <Key>
             <PropertyRef Name="id_responsable" />
           </Key>
           <Property Name="id_responsable" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="correo" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="correo" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="descipcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="MUNI_proyecto" Relationship="Self.FK_MUNI_proyecto_MUNI_responsable" FromRole="MUNI_responsable" ToRole="MUNI_proyecto" />
         </EntityType>
@@ -292,6 +295,8 @@
           <EntitySetMapping Name="MUNI_proyecto">
             <EntityTypeMapping TypeName="VentanillaModel.MUNI_proyecto">
               <MappingFragment StoreEntitySet="MUNI_proyecto">
+                <ScalarProperty Name="mapa" ColumnName="mapa" />
+                <ScalarProperty Name="fecha_creacion" ColumnName="fecha_creacion" />
                 <ScalarProperty Name="id_proyecto" ColumnName="id_proyecto" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
                 <ScalarProperty Name="direccion" ColumnName="direccion" />
