@@ -29,7 +29,7 @@ namespace proyectosMUNIVALPO.Models
         public DateTime Fecha_creacion { get; set; }
 
         
-        public string Mapa { get; set; }
+        public string __Mapa { get; set; }
 
 
 

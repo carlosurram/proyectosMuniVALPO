@@ -92,7 +92,7 @@ namespace proyectosMUNIVALPO.Controllers
             com.Parameters.AddWithValue("id_estado", id_estado);
             DateTime Fecha_creacion = DateTime.Now;
             com.Parameters.AddWithValue("fecha_creacion", Fecha_creacion);
-            com.Parameters.AddWithValue("mapa", form.Mapa);
+            com.Parameters.AddWithValue("mapa", form.__Mapa);
             
             //com.Parameters.AddWithValue("id_estado", form.Estado);
 
