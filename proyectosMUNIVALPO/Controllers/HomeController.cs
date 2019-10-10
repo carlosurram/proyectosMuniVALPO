@@ -91,11 +91,11 @@ namespace proyectosMUNIVALPO.Controllers
             int id_estado = 1;
             com.Parameters.AddWithValue("id_estado", id_estado);
             DateTime Fecha_creacion = DateTime.Now;
-            
+
             com.Parameters.AddWithValue("fecha_creacion", Fecha_creacion);
             com.Parameters.AddWithValue("mapa", form.__Mapa);
+
             
-            //com.Parameters.AddWithValue("id_estado", form.Estado);
 
 
             com.ExecuteNonQuery();
@@ -139,20 +139,21 @@ namespace proyectosMUNIVALPO.Controllers
             using (var db = new VentanillaEntities())
             {
                 MUNI_proyecto oProyecto = db.MUNI_proyecto.Find(id);
-                var n = oProyecto;
-                editModel.Estado = oProyecto.id_estado.ToString();
+                editModel.Id_Proyecto = id;
+                editModel.Estado = oProyecto.id_estado;
                 editModel.Nombre = oProyecto.nombre;
-                editModel.TipoProyecto = oProyecto.id_tipoProyecto.ToString();
+                editModel.TipoProyecto = oProyecto.id_tipoProyecto;
                 editModel.Fecha = (DateTime)oProyecto.fecha_entrega;
                 editModel.Direccion = oProyecto.direccion;
-                editModel.Responsable = oProyecto.id_responsable.ToString();
+                editModel.Responsable = oProyecto.id_responsable;
                 editModel.Bajada = oProyecto.bajada;
                 editModel.Descripcion = oProyecto.descripcion;
 
-                editModel.Id_Proyecto = id;
+                editModel.Fecha_creacion = (DateTime)oProyecto.fecha_creacion;
+                editModel.__Mapa = oProyecto.mapa;
 
             }
-            //editModel.Id_Proyecto = id;
+           
 
             return View(editModel);
         }
@@ -160,35 +161,37 @@ namespace proyectosMUNIVALPO.Controllers
         [HttpPost]
         public ActionResult ModificarProyecto(ModificarFormularioProyecto editModel)
         {
-            if (!ModelState.IsValid)
+            /*if (!ModelState.IsValid)
             {
                 return View(editModel);
 
-            }
+            }*/
 
             using (var db = new VentanillaEntities())
             {
                 var oProyecto = db.MUNI_proyecto.Find(editModel.Id_Proyecto);
 
-
+                oProyecto.id_proyecto = editModel.Id_Proyecto;
                 oProyecto.nombre = editModel.Nombre;
-                oProyecto.id_tipoProyecto = int.Parse(editModel.TipoProyecto);
-                oProyecto.id_estado = int.Parse(editModel.Estado);//aqui esta el problema, recibe el estado null
+                oProyecto.id_tipoProyecto = editModel.TipoProyecto;
+                oProyecto.id_estado = editModel.Estado;//aqui esta el problema, recibe el estado null
                 oProyecto.fecha_entrega = editModel.Fecha;
                 oProyecto.direccion = editModel.Direccion;
-                oProyecto.id_responsable = int.Parse(editModel.Responsable);
+                oProyecto.id_responsable = editModel.Responsable;
                 oProyecto.bajada = editModel.Bajada;
                 oProyecto.descripcion = editModel.Descripcion;
+                oProyecto.fecha_creacion = editModel.Fecha_creacion;
+                oProyecto.mapa = editModel.__Mapa;
 
-                oProyecto.id_estado = int.Parse(editModel.Estado);
+                
 
                 db.Entry(oProyecto).State = System.Data.Entity.EntityState.Modified;
-                db.SaveChanges();
+                db.SaveChanges();//se cae aquí porque tiene problema con id estado
 
 
             }
 
-            return Redirect(Url.Content("~/Home/"));
+            return Redirect(Url.Content("~/Home/SeleccionarProyecto"));
         }
 
 
@@ -200,8 +203,8 @@ namespace proyectosMUNIVALPO.Controllers
                 List<ProyectoViewModel> lst = null;
                 using (VentanillaEntities db = new VentanillaEntities())
                 {
-                    lst = (from d in db.MUNI_proyecto 
-                           select new ProyectoViewModel 
+                    lst = (from d in db.MUNI_proyecto
+                           select new ProyectoViewModel
                            {
                                Id_proyecto = d.id_proyecto,
                                Nombre = d.nombre,
