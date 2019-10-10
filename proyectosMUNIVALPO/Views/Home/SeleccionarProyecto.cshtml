@@ -106,26 +106,27 @@
                                     <tbody>
                                         @foreach (var elemento in Model)
                                         {
-                                            <tr>
-                                                <td>@elemento.Id_proyecto</td>
-                                                <td>@elemento.Nombre</td>
-                                                <td>
-                                                    @{var tipo = "";
-                                                        switch (elemento.Id_estado)
-                                                        {
-                                                            case 1:
-                                                                tipo = "Habilitado";
-                                                                break;
-                                                            case 2:
-                                                                tipo = "Inhabilitado";
-                                                                break;
-                                                            case 3:
-                                                                tipo = "Publicado";
-                                                                break;
-                                                        }
-                                                      }@tipo
+                                        <tr>
+                                            <td>@elemento.Id_proyecto</td>
+                                            <td>@elemento.Nombre</td>
+                                            <td>
+                                                @{var tipo = "";
+                                                    switch (elemento.Id_estado)
+                                                    {
+                                                        case 1:
+                                                            tipo = "Habilitado";
+                                                            break;
+                                                        case 2:
+                                                            tipo = "Inhabilitado";
+                                                            break;
+                                                        case 3:
+                                                            tipo = "Publicado";
+                                                            break;
+                                                    }
+                                                }@tipo
                                             </td>
-                                            <td> <i class="icon-edit"></i><a href="#"> Seleccionar</a> </td>
+                                            <!--   <td><i class="icon-edit"></i> <a href="#"> Seleccionar</a> </td>-->
+                                            <td><input onclick="document.location.href='@Url.Content("~/Home/ModificarProyecto/"+elemento.Id_proyecto)'" type="button" value="Modificar" class="btn btn-info" /></td>
                                         </tr>
 
                                     }

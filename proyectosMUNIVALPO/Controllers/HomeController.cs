@@ -122,8 +122,9 @@ namespace proyectosMUNIVALPO.Controllers
             }
         }
 
-        public ActionResult ModificarProyecto()
+        public ActionResult ModificarProyecto(int id)
         {
+            /*
             if (Session["Login"] != null)
             {
                 return View();
@@ -131,7 +132,62 @@ namespace proyectosMUNIVALPO.Controllers
             else
             {
                 return View("Login");
+            }*/
+
+            ModificarFormularioProyecto editModel = new ModificarFormularioProyecto();
+            using (var db = new VentanillaEntities())
+            {
+                MUNI_proyecto oProyecto = db.MUNI_proyecto.Find(id);
+                var n = oProyecto;
+                editModel.Estado = oProyecto.id_estado.ToString();
+                editModel.Nombre = oProyecto.nombre;
+                editModel.TipoProyecto = oProyecto.id_tipoProyecto.ToString();
+                editModel.Fecha = (DateTime)oProyecto.fecha_entrega;
+                editModel.Direccion = oProyecto.direccion;
+                editModel.Responsable = oProyecto.id_responsable.ToString();
+                editModel.Bajada = oProyecto.bajada;
+                editModel.Descripcion = oProyecto.descripcion;
+
+                editModel.Id_Proyecto = id;
+
             }
+            //editModel.Id_Proyecto = id;
+
+            return View(editModel);
+        }
+
+        [HttpPost]
+        public ActionResult ModificarProyecto(ModificarFormularioProyecto editModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(editModel);
+
+            }
+
+            using (var db = new VentanillaEntities())
+            {
+                var oProyecto = db.MUNI_proyecto.Find(editModel.Id_Proyecto);
+
+
+                oProyecto.nombre = editModel.Nombre;
+                oProyecto.id_tipoProyecto = int.Parse(editModel.TipoProyecto);
+                oProyecto.id_estado = int.Parse(editModel.Estado);//aqui esta el problema, recibe el estado null
+                oProyecto.fecha_entrega = editModel.Fecha;
+                oProyecto.direccion = editModel.Direccion;
+                oProyecto.id_responsable = int.Parse(editModel.Responsable);
+                oProyecto.bajada = editModel.Bajada;
+                oProyecto.descripcion = editModel.Descripcion;
+
+                oProyecto.id_estado = int.Parse(editModel.Estado);
+
+                db.Entry(oProyecto).State = System.Data.Entity.EntityState.Modified;
+                db.SaveChanges();
+
+
+            }
+
+            return Redirect(Url.Content("~/Home/"));
         }
 
 
