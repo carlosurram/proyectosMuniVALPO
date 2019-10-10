@@ -12,7 +12,7 @@ namespace proyectosMUNIVALPO.Models
 
         public string Direccion { get; set; }
 
-        public string Responsable { get; set; }
+        public int Responsable { get; set; }
 
        // public string Correo { get; set; }
 
@@ -20,9 +20,9 @@ namespace proyectosMUNIVALPO.Models
 
         public string Descripcion { get; set; }
 
-        public string TipoProyecto { get; set; }
+        public int TipoProyecto { get; set; }
 
-        public string Estado { get; set; }
+        public int Estado { get; set; }
 
         public string Archivo { get; set; }
 
@@ -41,7 +41,7 @@ namespace proyectosMUNIVALPO.Models
 
         public string Direccion { get; set; }
 
-        public string Responsable { get; set; }
+        public int Responsable { get; set; }
 
         //public string Correo { get; set; }
 
@@ -49,14 +49,13 @@ namespace proyectosMUNIVALPO.Models
 
         public string Descripcion { get; set; }
 
-        public string TipoProyecto { get; set; }
+        public int TipoProyecto { get; set; }
 
-        public string Estado { get; set; }
+        public int Estado { get; set; }
 
         public string Archivo { get; set; }
 
         public DateTime Fecha_creacion { get; set; }
-
 
         public string __Mapa { get; set; }
 
