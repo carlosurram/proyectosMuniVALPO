@@ -94,7 +94,7 @@ namespace proyectosMUNIVALPO.Controllers
 
             com.Parameters.AddWithValue("fecha_creacion", Fecha_creacion);
             com.Parameters.AddWithValue("mapa", form.__Mapa);
-
+            
             
 
 
@@ -174,7 +174,7 @@ namespace proyectosMUNIVALPO.Controllers
                 oProyecto.id_proyecto = editModel.Id_Proyecto;
                 oProyecto.nombre = editModel.Nombre;
                 oProyecto.id_tipoProyecto = editModel.TipoProyecto;
-                oProyecto.id_estado = editModel.Estado;//aqui esta el problema, recibe el estado null
+                oProyecto.id_estado = editModel.Estado;
                 oProyecto.fecha_entrega = editModel.Fecha;
                 oProyecto.direccion = editModel.Direccion;
                 oProyecto.id_responsable = editModel.Responsable;
@@ -186,7 +186,7 @@ namespace proyectosMUNIVALPO.Controllers
                 
 
                 db.Entry(oProyecto).State = System.Data.Entity.EntityState.Modified;
-                db.SaveChanges();//se cae aquí porque tiene problema con id estado
+                db.SaveChanges();
 
 
             }
@@ -221,8 +221,5 @@ namespace proyectosMUNIVALPO.Controllers
         }
     }
 
-    /* public ActionResult SeleccionarProyecto2()
-     {
 
- }*/
 }
