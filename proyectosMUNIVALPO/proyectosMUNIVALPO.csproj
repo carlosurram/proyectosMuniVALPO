@@ -708,6 +708,10 @@
     <Content Include="Views\Home\SeleccionarProyecto.cshtml" />
     <Content Include="Views\Home\VerProyecto.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\SaludYDeporte.cshtml" />
+    <Content Include="Views\Home\DesarrolloEconomico.cshtml" />
+    <Content Include="Views\Home\EspaciosPublicos.cshtml" />
+    <Content Include="Views\Home\ViviendaYReactivacion.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

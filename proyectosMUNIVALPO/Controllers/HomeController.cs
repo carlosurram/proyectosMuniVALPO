@@ -22,6 +22,22 @@ namespace proyectosMUNIVALPO.Controllers
             return View();
         }
 
+        public ActionResult SaludYDeporte()
+        {
+            return View();
+        }
+        public ActionResult DesarrolloEconomico()
+        {
+            return View();
+        }
+        public ActionResult EspaciosPublicos()
+        {
+            return View();
+        }
+        public ActionResult ViviendaYReactivacion()
+        {
+            return View();
+        }
         public ActionResult ListaProyectos()
         {
             return View();
