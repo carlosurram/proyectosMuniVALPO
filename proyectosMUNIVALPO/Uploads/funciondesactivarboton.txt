@@ -1,0 +1,59 @@
+http://www.developando.com/blog/deshabilitar-el-boton-volver-del-navegador/?fbclid=IwAR3QbifrhVIKbeWNIJOg2orPpqfgalQ5BgQ2bCRhWcsWoMbDYz4oYXHiQdM
+
+login
+
+bajo el head
+
+<script src="/scripts/custom.js"></script>
+
+<script src="/scripts/custom2.js"></script>
+
+
+<body  onload="nobackbutton();">
+
+otra opcion 
+
+<body  onload="nobackbutton(); noforwardbutton();" >
+
+en carpeta script
+
+crear nuevo js 
+
+function nobackbutton(){
+	
+   window.location.hash="no-back-button";
+	
+   window.location.hash="Again-No-back-button" //chrome
+	
+   window.onhashchange=function(){window.location.hash="no-back-button";}
+	
+}
+
+
+function noforwardbutton() {
+
+    window.location.hash = "no-forward-button";
+
+
+    window.location.hash = "Again-No-forward-button" //chrome
+
+    window.onhashchange = function () { window.location.hash = "no-forward-button"; }
+
+}
+
+
+
+
+
+
+
+string logged =Session["Login"] as string;
+            if (logged.Equals("correcto"))
+            {
+                string n = "";
+
+            }
+            else
+            {
+                string r = "";
+            }

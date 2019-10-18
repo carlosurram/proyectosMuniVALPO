@@ -6,7 +6,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-
+using System.IO;
 namespace proyectosMUNIVALPO.Controllers
 {
     public class HomeController : Controller
@@ -54,6 +54,35 @@ namespace proyectosMUNIVALPO.Controllers
             return View();
         }
 
+
+        //-------------------------prueba de subir archivo en una vista externa----------------------
+        /*
+        [HttpGet]
+        public ActionResult Upload()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Upload(HttpPostedFileBase postedFile)
+        {
+            if (postedFile != null)
+            {
+                string path = Server.MapPath("~/Uploads/");
+                if (!Directory.Exists(path))
+                {
+                    Directory.CreateDirectory(path);
+                }
+
+                postedFile.SaveAs(path + Path.GetFileName(postedFile.FileName));
+                ViewBag.Message = "File uploaded successfully.";
+            }
+
+            return View();
+        }
+        */
+        
+
         void connectionString()
         {
             con.ConnectionString = "Server=192.168.110.22;Database=Ventanilla;User Id=practicadesarrollo;Password=desarrollo864;";
@@ -82,9 +111,19 @@ namespace proyectosMUNIVALPO.Controllers
         }
 
         [HttpPost]
-        public ActionResult AgregarProyecto(FormularioProyecto form)
+        public ActionResult AgregarProyecto(FormularioProyecto form , HttpPostedFileBase Upload)
         {
+            if (Upload != null)
+            {
+                string path = Server.MapPath("~/Uploads/");
+                if (!Directory.Exists(path))
+                {
+                    Directory.CreateDirectory(path);
+                }
 
+                Upload.SaveAs(path + Path.GetFileName(Upload.FileName));
+                ViewBag.Message = "Archivo subido exitosamente.";
+            }
 
             connectionString();
             con.Open();
@@ -112,10 +151,7 @@ namespace proyectosMUNIVALPO.Controllers
             com.Parameters.AddWithValue("mapa", form.__Mapa);
             
             
-
-
             com.ExecuteNonQuery();
-
 
             con.Close();
 
