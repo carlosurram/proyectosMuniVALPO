@@ -714,7 +714,7 @@
     <Content Include="Views\Home\ViviendaYReactivacion.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\NewFolder1\" />
+    <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
