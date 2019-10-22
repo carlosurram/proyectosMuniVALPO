@@ -141,37 +141,37 @@ namespace proyectosMUNIVALPO.Controllers
 
         public ActionResult ModificarProyecto(int id)
         {
-            /*
+            
             if (Session["Login"] != null)
             {
-                return View();
+                ModificarFormularioProyecto editModel = new ModificarFormularioProyecto();
+                using (var db = new VentanillaEntities())
+                {
+                    MUNI_proyecto oProyecto = db.MUNI_proyecto.Find(id);
+                    editModel.Id_Proyecto = id;
+                    editModel.Estado = oProyecto.id_estado;
+                    editModel.Nombre = oProyecto.nombre;
+                    editModel.TipoProyecto = oProyecto.id_tipoProyecto;
+                    editModel.Fecha = (DateTime)oProyecto.fecha_entrega;
+                    editModel.Direccion = oProyecto.direccion;
+                    editModel.Responsable = oProyecto.id_responsable;
+                    editModel.Bajada = oProyecto.bajada;
+                    editModel.Descripcion = oProyecto.descripcion;
+
+                    editModel.Fecha_creacion = (DateTime)oProyecto.fecha_creacion;
+                    editModel.__Mapa = oProyecto.mapa;
+
+                }
+
+
+                return View(editModel);
             }
             else
             {
                 return View("Login");
-            }*/
-
-            ModificarFormularioProyecto editModel = new ModificarFormularioProyecto();
-            using (var db = new VentanillaEntities())
-            {
-                MUNI_proyecto oProyecto = db.MUNI_proyecto.Find(id);
-                editModel.Id_Proyecto = id;
-                editModel.Estado = oProyecto.id_estado;
-                editModel.Nombre = oProyecto.nombre;
-                editModel.TipoProyecto = oProyecto.id_tipoProyecto;
-                editModel.Fecha = (DateTime)oProyecto.fecha_entrega;
-                editModel.Direccion = oProyecto.direccion;
-                editModel.Responsable = oProyecto.id_responsable;
-                editModel.Bajada = oProyecto.bajada;
-                editModel.Descripcion = oProyecto.descripcion;
-
-                editModel.Fecha_creacion = (DateTime)oProyecto.fecha_creacion;
-                editModel.__Mapa = oProyecto.mapa;
-
             }
-           
 
-            return View(editModel);
+
         }
 
         [HttpPost]
