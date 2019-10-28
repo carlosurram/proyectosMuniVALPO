@@ -118,130 +118,133 @@
 
                 <div class="row">
                     <div class="col-md-12 col-md-offset-0">
-                        <form action="AgregarProyecto" method="post">
-                            <div class="col-md-2 <!--animate-box-->">
-                                <h3>Ingresar proyecto</h3>
-
-                            </div>
-                            <div class="col-md-10  <!--animate-box-->">
-                                <div class="row">
-                                    <div class="col-md-8">
-                                        Nombre del proyecto <input type="text" id="nombreProyecto" name="Nombre" class="form-control " maxlength="50" required>
-                                    </div>
-                                    <div class="col-md-4">
-
-                                        Tipo de proyecto
-                                        <select id="tipoProyecto" name="TipoProyecto" class="form-control" required>
-
-                                            <option value="1">Salud y Deporte</option>
-                                            <option value="2">Desarrollo Económico y Generación de Empleo</option>
-                                            <option value="3">Espacios Públicos y Comunitarios</option>
-                                            <option value="4">Vivienda y Reactivación de Barrios Emblemáticos</option>
-
-                                        </select>
-
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-md-4">
-
-                                        Fecha entrega proyecto <input type="date" id="fechaEntrega" name="Fecha" class="form-control" required>
-                                    </div>
-                                    <div class="col-md-8">
-
-                                        Ubicación/dirección
-
-                                        <input type="text" id="direccion" name="Direccion" class="form-control" maxlength="50" required>
-                                    </div>
-
+                        @using (Html.BeginForm("AgregarProyecto", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                        {
+                                <div class="col-md-2 <!--animate-box-->">
+                                    <h3>Ingresar proyecto</h3>
 
                                 </div>
+                                <div class="col-md-10  <!--animate-box-->">
+                                    <div class="row">
+                                        <div class="col-md-8">
+                                            Nombre del proyecto <input type="text" id="nombreProyecto" name="Nombre" class="form-control " maxlength="50" required>
+                                        </div>
+                                        <div class="col-md-4">
 
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        Responsable <select id="responsable" name="Responsable" class="form-control" required>
-                                            <option value="1">Secpla</option>
-                                            <option value="2">Dideco</option>
-                                            
+                                            Tipo de proyecto
+                                            <select id="tipoProyecto" name="TipoProyecto" class="form-control" required>
 
+                                                <option value="1">Salud y Deporte</option>
+                                                <option value="2">Desarrollo Económico y Generación de Empleo</option>
+                                                <option value="3">Espacios Públicos y Comunitarios</option>
+                                                <option value="4">Vivienda y Reactivación de Barrios Emblemáticos</option>
 
-                                        </select>
+                                            </select>
+
+                                        </div>
                                     </div>
 
-                                    <div class="col-md-6 align-items-center">
-                                        Mapa
-                                        <input type="text" id="mapa" name="__Mapa" class="form-control" required> <!--doble guion bajo evita problemas con html-->
+                                    <div class="row">
+                                        <div class="col-md-4">
+
+                                            Fecha entrega proyecto <input type="date" id="fechaEntrega" name="Fecha" class="form-control" required>
+                                        </div>
+                                        <div class="col-md-8">
+
+                                            Ubicación/dirección
+
+                                            <input type="text" id="direccion" name="Direccion" class="form-control" maxlength="50" required>
+                                        </div>
+
+
                                     </div>
-                                    <div class="col-md-2">
-                                        <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#modalMapa">
-                                            <i class="material-icons">
-                                                contact_support
-                                            </i>
-                                        </button>
+
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            Responsable <select id="responsable" name="Responsable" class="form-control" required>
+                                                <option value="1">Secpla</option>
+                                                <option value="2">Dideco</option>
+
+
+
+                                            </select>
+                                        </div>
+
+                                        <div class="col-md-6 align-items-center">
+                                            Mapa
+                                            <input type="text" id="mapa" name="__Mapa" class="form-control" required> <!--doble guion bajo evita problemas con html-->
+                                        </div>
+                                        <div class="col-md-2">
+                                            <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#modalMapa">
+                                                <i class="material-icons">
+                                                    contact_support
+                                                </i>
+                                            </button>
+                                        </div>
                                     </div>
+
+                                    <div class="row">
+                                        <div class="col-md-12">
+
+                                            Bajada (máx. 120 caracteres)<input type="text" id="bajada" name="Bajada" class="form-control" maxlength="120" required>
+                                        </div>
+
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="col-md-12">
+
+                                            Descripción (máx 1.200 caracteres) <textarea id="descripcion" name="Descripcion" rows="11" cols="40" class="form-control" maxlength="1200" required></textarea>
+                                        </div>
+
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <span>Select File:</span>
+                                        <input type="file" name="Upload" /> @*name="Upload" corresponde a esta parte del "controlador"  public ActionResult AgregarProyecto(FormularioProyecto form , HttpPostedFileBase Upload)*@
+                                        <hr />
+                                        <br />
+                                        <span style="color:green">@ViewBag.Message</span>
+
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <table class="table table-striped">
+                                                <thead class="cabecera-tabla">
+                                                    <tr>
+                                                        <td style="width:70%;">Nombre archivo</td>
+                                                        <td>Ver archivo</td>
+                                                        <td> </td>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>Nombre del archivo</td>
+                                                        <td><i class="icon-eye"></i> Ver</td>
+                                                        <td><i class="icon-edit"></i> Eliminar</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Nombre del archivo</td>
+                                                        <td><i class="icon-eye"></i> Ver</td>
+                                                        <td><i class="icon-edit"></i> Eliminar</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="col-md-12 text-center">
+                                            <input type="submit" value="Guardar" class="btn btn-primary btn-submit text-right">
+
+                                        </div>
+                                    </div>  
                                 </div>
-
-                                <div class="row">
-                                    <div class="col-md-12">
-
-                                        Bajada (máx. 120 caracteres)<input type="text" id="bajada" name="Bajada" class="form-control" maxlength="120" required >
-                                    </div>
-
-                                </div>
-                                <br />
-                                <div class="row">
-                                    <div class="col-md-12">
-
-                                        Descripción (máx 1.200 caracteres) <textarea id="descripcion" name="Descripcion" rows="11" cols="40" class="form-control" maxlength="1200" required></textarea>
-                                    </div>
-
-                                </div>
-                                <br />
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        Subir  Archivos <input id="archivos" name="Archivo" type="file" />
-                                    </div>
-
-                                </div>
-                                <br />
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <table class="table table-striped">
-                                            <thead class="cabecera-tabla">
-                                                <tr>
-                                                    <td style="width:70%;">Nombre archivo</td>
-                                                    <td>Ver archivo</td>
-                                                    <td> </td>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>Nombre del archivo</td>
-                                                    <td><i class="icon-eye"></i> Ver</td>
-                                                    <td><i class="icon-edit"></i> Eliminar</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Nombre del archivo</td>
-                                                    <td><i class="icon-eye"></i> Ver</td>
-                                                    <td><i class="icon-edit"></i> Eliminar</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-
-                                </div>
-                                <br />
-                                <div class="row">
-                                    <div class="col-md-12 text-center">
-                                        <input type="submit" value="Guardar" class="btn btn-primary btn-submit text-right">
-
-                                    </div>
-                                </div>
-
-                            </div>
-                        </form>
-                    </div>
+                                 }
+                            @*</form>*@
+                        </div>
                 </div>
             </div>
         </div>
