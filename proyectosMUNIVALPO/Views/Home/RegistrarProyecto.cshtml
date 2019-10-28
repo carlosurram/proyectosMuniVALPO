@@ -118,7 +118,9 @@
 
                 <div class="row">
                     <div class="col-md-12 col-md-offset-0">
-                        <form action="AgregarProyecto" method="post">
+                        @*@ <form action="AgregarProyecto" method="post" enctype="multipart/form-data"> -->*@
+                        @using (Html.BeginForm("AgregarProyecto", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                        {
                             <div class="col-md-2 <!--animate-box-->">
                                 <h3>Ingresar proyecto</h3>
 
@@ -163,7 +165,7 @@
                                         Responsable <select id="responsable" name="Responsable" class="form-control" required>
                                             <option value="1">Secpla</option>
                                             <option value="2">Dideco</option>
-                                            
+
 
 
                                         </select>
@@ -185,7 +187,7 @@
                                 <div class="row">
                                     <div class="col-md-12">
 
-                                        Bajada (máx. 120 caracteres)<input type="text" id="bajada" name="Bajada" class="form-control" maxlength="120" required >
+                                        Bajada (máx. 120 caracteres)<input type="text" id="bajada" name="Bajada" class="form-control" maxlength="120" required>
                                     </div>
 
                                 </div>
@@ -198,14 +200,17 @@
 
                                 </div>
                                 <br />
+
                                 <div class="row">
-                                    <div class="col-md-12">
-                                        Subir  Archivos <input id="archivos" name="Archivo" type="file" />
-                                    </div>
+                                    <span>Select File:</span>
+                                    <input type="file" name="Upload" /> @*name="Upload" corresponde a esta parte del "controlador"  public ActionResult AgregarProyecto(FormularioProyecto form , HttpPostedFileBase Upload)*@
+                                    <hr />
+                                    <br />
+                                    <span style="color:green">@ViewBag.Message</span>
 
                                 </div>
                                 <br />
-                                <div class="row">
+                                @*<div class="row">
                                     <div class="col-md-12">
                                         <table class="table table-striped">
                                             <thead class="cabecera-tabla">
@@ -230,7 +235,7 @@
                                         </table>
                                     </div>
 
-                                </div>
+                                </div>*@
                                 <br />
                                 <div class="row">
                                     <div class="col-md-12 text-center">
@@ -240,7 +245,8 @@
                                 </div>
 
                             </div>
-                        </form>
+                        }
+                        @*@</form>*@
                     </div>
                 </div>
             </div>

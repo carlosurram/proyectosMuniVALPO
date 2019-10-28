@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.IO;
 
 namespace proyectosMUNIVALPO.Controllers
 {
@@ -82,9 +83,19 @@ namespace proyectosMUNIVALPO.Controllers
         }
 
         [HttpPost]
-        public ActionResult AgregarProyecto(FormularioProyecto form)
+        public ActionResult AgregarProyecto(FormularioProyecto form, HttpPostedFileBase Upload)
         {
+            if (Upload != null)
+            {
+                string path = Server.MapPath("~/Uploads/");
+                if (!Directory.Exists(path))
+                {
+                    Directory.CreateDirectory(path);
+                }
 
+                Upload.SaveAs(path + Path.GetFileName(Upload.FileName));
+                ViewBag.Message = "Archivo subido exitosamente.";
+            }
 
             connectionString();
             con.Open();
